@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="FloodGuard test fixture">
+  <bounds minlat="0" minlon="0" maxlat="0.002" maxlon="0.003" />
+  <node id="1" lat="0.0000" lon="0.0000" />
+  <node id="2" lat="0.0000" lon="0.0010" />
+  <node id="3" lat="0.0000" lon="0.0020" />
+  <node id="4" lat="0.0010" lon="0.0010" />
+  <node id="5" lat="0.0010" lon="0.0020" />
+  <node id="6" lat="0.0010" lon="0.0030" />
+  <node id="7" lat="-0.0010" lon="0.0015" />
+  <node id="8" lat="0.0020" lon="0.0015" />
+  <way id="100">
+    <nd ref="1" /><nd ref="2" /><nd ref="3" />
+    <tag k="highway" v="residential" /><tag k="name" v="Two Way Street" /><tag k="maxspeed" v="30" />
+  </way>
+  <way id="101">
+    <nd ref="2" /><nd ref="3" />
+    <tag k="highway" v="primary" /><tag k="oneway" v="yes" /><tag k="maxspeed" v="50 km/h" />
+  </way>
+  <way id="102">
+    <nd ref="3" /><nd ref="4" />
+    <tag k="highway" v="secondary" /><tag k="oneway" v="-1" /><tag k="maxspeed" v="30 mph" />
+  </way>
+  <way id="103">
+    <nd ref="2" /><nd ref="4" />
+    <tag k="highway" v="tertiary" /><tag k="maxspeed" v="unknown" />
+  </way>
+  <way id="104">
+    <nd ref="4" /><nd ref="5" /><nd ref="6" />
+    <tag k="highway" v="service" /><tag k="junction" v="roundabout" />
+  </way>
+  <way id="200">
+    <nd ref="1" /><nd ref="3" />
+    <tag k="highway" v="footway" />
+  </way>
+  <way id="201">
+    <nd ref="2" /><nd ref="5" />
+    <tag k="highway" v="residential" /><tag k="access" v="private" />
+  </way>
+  <way id="202">
+    <nd ref="7" /><nd ref="8" />
+    <tag k="highway" v="primary" /><tag k="bridge" v="yes" />
+  </way>
+</osm>

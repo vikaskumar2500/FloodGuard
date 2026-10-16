@@ -1,0 +1,9 @@
+{
+  "cold_latency_ms": 31.151083996519446,
+  "warm_latency_avg_ms": 1.9670166517607868,
+  "warm_latency_min_ms": 1.5164159703999758,
+  "speedup": 15.836715956946458,
+  "route_hits": 50,
+  "route_misses": 1,
+  "overall_hit_ratio": 0.9804
+}

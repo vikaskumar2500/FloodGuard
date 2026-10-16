@@ -1,0 +1,213 @@
+{
+  "categorical_stats": {
+    "edge_id": {
+      "fixture-bottom-1": 41,
+      "fixture-bottom-2": 41,
+      "fixture-bottom-3": 41,
+      "fixture-top-1": 41,
+      "fixture-top-2": 41,
+      "fixture-top-3": 41
+    },
+    "road_class": {
+      "primary": 123,
+      "secondary": 123
+    },
+    "season_category": {
+      "POST_MONSOON": 246
+    },
+    "source_type": {
+      "SYNTHETIC": 246
+    }
+  },
+  "duplicate_rows": 0,
+  "max_time": "2026-10-07T03:20:00+00:00",
+  "min_time": "2026-10-07T00:00:00+00:00",
+  "missingness_by_feature": {
+    "day_of_week": 0.0,
+    "dist_to_flood_zone_m": 1.0,
+    "edge_elevation_m": 0.0,
+    "edge_id": 0.0,
+    "historical_flood_count_30d": 0.0,
+    "hour_of_day": 0.0,
+    "humidity_pct": 0.0,
+    "is_bridge": 0.0,
+    "is_rainfall_missing": 0.0,
+    "is_temperature_missing": 0.0,
+    "is_tunnel": 0.0,
+    "is_water_depth_missing": 0.0,
+    "length_m": 0.0,
+    "month": 0.0,
+    "nearby_sensor_count": 0.0,
+    "observation_time": 0.0,
+    "prediction_horizon_minutes": 0.0,
+    "rainfall_accum_15m_mm": 0.561,
+    "rainfall_accum_1h_mm": 0.0,
+    "rainfall_accum_30m_mm": 0.2683,
+    "rainfall_accum_3h_mm": 0.0,
+    "rainfall_rate_now_mm_h": 0.0,
+    "road_class": 0.0,
+    "season_category": 0.0,
+    "sensor_confidence": 0.5,
+    "sensor_freshness_seconds": 0.5,
+    "source_type": 0.0,
+    "speed_limit_mps": 0.0,
+    "target_flooded_within_horizon": 0.0,
+    "temperature_c": 0.0,
+    "water_depth_current_cm": 0.5,
+    "water_depth_max_30m_cm": 0.622,
+    "water_depth_trend_cm_per_min": 0.5976,
+    "weather_freshness_seconds": 0.0,
+    "wind_speed_mps": 0.0
+  },
+  "negative_count": 179,
+  "numeric_stats": {
+    "dist_to_flood_zone_m": {
+      "max": null,
+      "mean": null,
+      "min": null,
+      "missing_count": 246,
+      "missing_pct": 1.0,
+      "std": null
+    },
+    "edge_elevation_m": {
+      "max": 15.0,
+      "mean": 10.833,
+      "min": 6.0,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "std": 3.184
+    },
+    "humidity_pct": {
+      "max": 80.0,
+      "mean": 80.0,
+      "min": 80.0,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "std": 0.0
+    },
+    "length_m": {
+      "max": 200.0,
+      "mean": 150.0,
+      "min": 100.0,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "std": 50.0
+    },
+    "rainfall_accum_15m_mm": {
+      "max": 10.75,
+      "mean": 4.681,
+      "min": 0.0,
+      "missing_count": 138,
+      "missing_pct": 0.561,
+      "std": 3.637
+    },
+    "rainfall_accum_1h_mm": {
+      "max": 35.5,
+      "mean": 17.382,
+      "min": 0.0,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "std": 11.778
+    },
+    "rainfall_accum_30m_mm": {
+      "max": 21.5,
+      "mean": 8.817,
+      "min": 0.0,
+      "missing_count": 66,
+      "missing_pct": 0.2683,
+      "std": 6.911
+    },
+    "rainfall_accum_3h_mm": {
+      "max": 69.857,
+      "mean": 38.765,
+      "min": 0.0,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "std": 22.375
+    },
+    "rainfall_rate_now_mm_h": {
+      "max": 43.0,
+      "mean": 25.585,
+      "min": 0.0,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "std": 15.936
+    },
+    "sensor_confidence": {
+      "max": 0.5,
+      "mean": 0.5,
+      "min": 0.5,
+      "missing_count": 123,
+      "missing_pct": 0.5,
+      "std": 0.0
+    },
+    "sensor_freshness_seconds": {
+      "max": 2700.0,
+      "mean": 965.854,
+      "min": 0.0,
+      "missing_count": 123,
+      "missing_pct": 0.5,
+      "std": 788.209
+    },
+    "speed_limit_mps": {
+      "max": 13.88,
+      "mean": 12.495,
+      "min": 11.11,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "std": 1.385
+    },
+    "temperature_c": {
+      "max": 28.0,
+      "mean": 28.0,
+      "min": 28.0,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "std": 0.0
+    },
+    "water_depth_current_cm": {
+      "max": 35.0,
+      "mean": 19.854,
+      "min": 0.0,
+      "missing_count": 123,
+      "missing_pct": 0.5,
+      "std": 13.655
+    },
+    "water_depth_max_30m_cm": {
+      "max": 35.0,
+      "mean": 18.903,
+      "min": 0.0,
+      "missing_count": 153,
+      "missing_pct": 0.622,
+      "std": 13.311
+    },
+    "water_depth_trend_cm_per_min": {
+      "max": 1.9,
+      "mean": 1.038,
+      "min": -0.44,
+      "missing_count": 147,
+      "missing_pct": 0.5976,
+      "std": 0.792
+    },
+    "weather_freshness_seconds": {
+      "max": 3000.0,
+      "mean": 1060.976,
+      "min": 0.0,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "std": 881.76
+    },
+    "wind_speed_mps": {
+      "max": 3.5,
+      "mean": 3.5,
+      "min": 3.5,
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "std": 0.0
+    }
+  },
+  "positive_count": 67,
+  "positive_rate": 0.2724,
+  "total_rows": 246,
+  "unique_edges": 6
+}

@@ -1,0 +1,154 @@
+{
+  "feature_importances": [
+    {
+      "abs_importance": 2.1714,
+      "feature": "hour_of_day",
+      "importance": 2.1714
+    },
+    {
+      "abs_importance": 1.848,
+      "feature": "rainfall_accum_15m_mm",
+      "importance": 1.848
+    },
+    {
+      "abs_importance": 1.3804,
+      "feature": "water_depth_trend_cm_per_min",
+      "importance": -1.3804
+    },
+    {
+      "abs_importance": 1.1027,
+      "feature": "nearby_sensor_count",
+      "importance": 1.1027
+    },
+    {
+      "abs_importance": 1.1027,
+      "feature": "length_m",
+      "importance": -1.1027
+    },
+    {
+      "abs_importance": 1.1027,
+      "feature": "speed_limit_mps",
+      "importance": 1.1027
+    },
+    {
+      "abs_importance": 0.8015,
+      "feature": "weather_freshness_seconds",
+      "importance": 0.8015
+    },
+    {
+      "abs_importance": 0.5655,
+      "feature": "water_depth_current_cm",
+      "importance": 0.5655
+    },
+    {
+      "abs_importance": 0.5513,
+      "feature": "road_class_primary",
+      "importance": 0.5513
+    },
+    {
+      "abs_importance": 0.5513,
+      "feature": "road_class_secondary",
+      "importance": -0.5513
+    },
+    {
+      "abs_importance": 0.5513,
+      "feature": "is_water_depth_missing",
+      "importance": -0.5513
+    },
+    {
+      "abs_importance": 0.5063,
+      "feature": "rainfall_accum_30m_mm",
+      "importance": 0.5063
+    },
+    {
+      "abs_importance": 0.4075,
+      "feature": "water_depth_max_30m_cm",
+      "importance": -0.4075
+    },
+    {
+      "abs_importance": 0.3464,
+      "feature": "sensor_freshness_seconds",
+      "importance": 0.3464
+    },
+    {
+      "abs_importance": 0.3257,
+      "feature": "edge_elevation_m",
+      "importance": -0.3257
+    },
+    {
+      "abs_importance": 0.2756,
+      "feature": "rainfall_rate_now_mm_h",
+      "importance": -0.2756
+    },
+    {
+      "abs_importance": 0.2214,
+      "feature": "rainfall_accum_1h_mm",
+      "importance": -0.2214
+    },
+    {
+      "abs_importance": 0.1058,
+      "feature": "rainfall_accum_3h_mm",
+      "importance": 0.1058
+    },
+    {
+      "abs_importance": 0.0,
+      "feature": "temperature_c",
+      "importance": 0.0
+    },
+    {
+      "abs_importance": 0.0,
+      "feature": "humidity_pct",
+      "importance": 0.0
+    },
+    {
+      "abs_importance": 0.0,
+      "feature": "wind_speed_mps",
+      "importance": 0.0
+    },
+    {
+      "abs_importance": 0.0,
+      "feature": "sensor_confidence",
+      "importance": 0.0
+    },
+    {
+      "abs_importance": 0.0,
+      "feature": "day_of_week",
+      "importance": 0.0
+    },
+    {
+      "abs_importance": 0.0,
+      "feature": "month",
+      "importance": 0.0
+    },
+    {
+      "abs_importance": 0.0,
+      "feature": "historical_flood_count_30d",
+      "importance": 0.0
+    },
+    {
+      "abs_importance": 0.0,
+      "feature": "season_category_POST_MONSOON",
+      "importance": 0.0
+    },
+    {
+      "abs_importance": 0.0,
+      "feature": "is_bridge",
+      "importance": 0.0
+    },
+    {
+      "abs_importance": 0.0,
+      "feature": "is_tunnel",
+      "importance": 0.0
+    },
+    {
+      "abs_importance": 0.0,
+      "feature": "is_rainfall_missing",
+      "importance": 0.0
+    },
+    {
+      "abs_importance": 0.0,
+      "feature": "is_temperature_missing",
+      "importance": 0.0
+    }
+  ]
+}

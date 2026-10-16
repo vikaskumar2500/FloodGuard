@@ -1,0 +1,124 @@
+{
+  "feature_importances": [
+    {
+      "feature": "length_m",
+      "importance": 0.2512
+    },
+    {
+      "feature": "rainfall_accum_1h_mm",
+      "importance": 0.1665
+    },
+    {
+      "feature": "nearby_sensor_count",
+      "importance": 0.1579
+    },
+    {
+      "feature": "hour_of_day",
+      "importance": 0.0968
+    },
+    {
+      "feature": "water_depth_max_30m_cm",
+      "importance": 0.0775
+    },
+    {
+      "feature": "sensor_freshness_seconds",
+      "importance": 0.0701
+    },
+    {
+      "feature": "rainfall_accum_15m_mm",
+      "importance": 0.0513
+    },
+    {
+      "feature": "water_depth_current_cm",
+      "importance": 0.0406
+    },
+    {
+      "feature": "weather_freshness_seconds",
+      "importance": 0.0302
+    },
+    {
+      "feature": "rainfall_accum_30m_mm",
+      "importance": 0.0214
+    },
+    {
+      "feature": "rainfall_rate_now_mm_h",
+      "importance": 0.0185
+    },
+    {
+      "feature": "edge_elevation_m",
+      "importance": 0.018
+    },
+    {
+      "feature": "rainfall_accum_3h_mm",
+      "importance": 0.0
+    },
+    {
+      "feature": "temperature_c",
+      "importance": 0.0
+    },
+    {
+      "feature": "humidity_pct",
+      "importance": 0.0
+    },
+    {
+      "feature": "wind_speed_mps",
+      "importance": 0.0
+    },
+    {
+      "feature": "water_depth_trend_cm_per_min",
+      "importance": 0.0
+    },
+    {
+      "feature": "sensor_confidence",
+      "importance": 0.0
+    },
+    {
+      "feature": "speed_limit_mps",
+      "importance": 0.0
+    },
+    {
+      "feature": "day_of_week",
+      "importance": 0.0
+    },
+    {
+      "feature": "month",
+      "importance": 0.0
+    },
+    {
+      "feature": "historical_flood_count_30d",
+      "importance": 0.0
+    },
+    {
+      "feature": "road_class_primary",
+      "importance": 0.0
+    },
+    {
+      "feature": "road_class_secondary",
+      "importance": 0.0
+    },
+    {
+      "feature": "season_category_POST_MONSOON",
+      "importance": 0.0
+    },
+    {
+      "feature": "is_bridge",
+      "importance": 0.0
+    },
+    {
+      "feature": "is_tunnel",
+      "importance": 0.0
+    },
+    {
+      "feature": "is_rainfall_missing",
+      "importance": 0.0
+    },
+    {
+      "feature": "is_water_depth_missing",
+      "importance": 0.0
+    },
+    {
+      "feature": "is_temperature_missing",
+      "importance": 0.0
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+[project]
+name = "floodguard-backend"
+version = "0.1.0"
+description = "FloodGuard API and local infrastructure foundation"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "fastapi>=0.115,<1.0",
+    "pyjwt>=2.8,<3.0",
+    "passlib[bcrypt]>=1.7,<2.0",
+    "uvicorn[standard]>=0.34,<1.0",
+    "pydantic-settings>=2.7,<3.0",
+    "sqlalchemy[asyncio]>=2.0,<2.1",
+    "asyncpg>=0.30,<1.0",
+    "redis>=6.0,<7.0",
+    "alembic>=1.16,<2.0",
+    "geoalchemy2>=0.18,<1.0",
+    "pyarrow>=18.0",
+    "numpy>=2.0",
+    "scikit-learn>=1.5",
+    "xgboost>=2.0",
+    "joblib>=1.4",
+    "pandas>=2.2",
+    "boto3",
+    "bcrypt>=5.0.0",
+    "argon2-cffi>=25.1.0",
+    "safety>=3.8.1",
+    "python-multipart>=0.0.32",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3,<9.0",
+    "pytest-asyncio>=1.0,<2.0",
+    "httpx>=0.28,<1.0",
+    "ruff>=0.11,<1.0",
+    "moto>=5.2.3",
+    "pytest-cov>=7.1.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", ".."]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "-ra"
+markers = [
+    "unit: fast deterministic unit tests",
+    "integration: requires real external DB/cache (opt in with RUN_INTEGRATION_TESTS=1)",
+    "contract: schema and API contract tests",
+    "e2e: end-to-end system tests",
+    "security: auth and RBAC tests",
+    "ml: ML routing and model tests",
+    "browser: UI E2E browser tests",
+    "slow: tests taking > 2 seconds",
+    "aws_smoke: tests interacting with real AWS (opt in with RUN_AWS_SMOKE_TESTS=1)"
+]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+ignore = ["E501", "UP042", "B904", "ASYNC240", "E722", "B008", "E402", "F821"]

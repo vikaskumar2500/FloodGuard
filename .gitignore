@@ -1,0 +1,79 @@
+# ==========================================
+# 1. Environment Variables & Secrets (CRITICAL)
+# ==========================================
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+
+# ==========================================
+# 2. Binaries & Terraform
+# ==========================================
+terraform
+*.exe
+*.dll
+*.dylib
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# ==========================================
+# 3. Python Caches & Virtual Environments
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.cache/
+
+# ==========================================
+# 4. Node & Next.js Caches
+# ==========================================
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+
+# ==========================================
+# 5. Machine Learning Models & Heavy Artifacts
+# ==========================================
+*.joblib
+*.pkl
+/ml/artifacts/*.joblib
+/ml/artifacts/*.pkl
+
+# ==========================================
+# 6. Large Geospatial Data (Keep small sample only)
+# ==========================================
+*.osm.pbf
+/data/*.osm
+/data/*.geopackage
+!/data/kerala_300.osm
+!/data/.gitkeep
+
+# ==========================================
+# 7. Logs, Security Dumps & Scratch Folders
+# ==========================================
+*.log
+*-scan.txt
+.code-review-graph/
+
+# ==========================================
+# 8. OS & Editor Files
+# ==========================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

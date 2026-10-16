@@ -1,0 +1,11 @@
+{
+  "dataset_content_hash": "3a440b39bd9b318bfa10bf70b56186e4e60d3a5f6ff861bf8c8f13141dd21cb9",
+  "dataset_version": "v1-3df12444-3a440b39",
+  "hyperparameters": {},
+  "input_feature_count": 29,
+  "model_sha256": "dc6c0a3a925a4e9d77f001a086142b874d2e4a89291578e96ea3737607a6298a",
+  "model_type": "logistic",
+  "model_version": "logistic-v1",
+  "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+  "trained_at_utc": "2026-10-07T23:13:22.663234+00:00"
+}

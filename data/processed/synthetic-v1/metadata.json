@@ -1,0 +1,385 @@
+{
+  "class_distribution": {
+    "negative_count": 179,
+    "positive_count": 67,
+    "positive_rate": 0.2724
+  },
+  "created_at_utc": "2026-10-07T22:08:43.298318+00:00",
+  "dataset_content_hash": "3a440b39bd9b318bfa10bf70b56186e4e60d3a5f6ff861bf8c8f13141dd21cb9",
+  "dataset_version": "v1-3df12444-3a440b39",
+  "feature_config": {
+    "feature_version": "v1",
+    "flood_water_depth_threshold_cm": 15.0,
+    "include_missingness_indicators": true,
+    "include_road_features": true,
+    "include_temporal_features": true,
+    "prediction_horizon_minutes": 30,
+    "rainfall_change_threshold_mm_h": 0.5,
+    "sampling_interval_minutes": 5,
+    "sensor_freshness_seconds": 3600.0,
+    "split_test_ratio": 0.15,
+    "split_train_ratio": 0.7,
+    "split_val_ratio": 0.15,
+    "weather_freshness_seconds": 3600.0,
+    "weather_lookback_minutes": 180
+  },
+  "feature_config_hash": "3df12444a16c005c",
+  "feature_version": "v1",
+  "prediction_horizon_minutes": 30,
+  "sampling_interval_minutes": 5,
+  "schema": [
+    {
+      "availability_contract": "<= T",
+      "description": "Road edge identifier",
+      "dtype": "string",
+      "name": "edge_id",
+      "nullable": false,
+      "source": "metadata",
+      "units": "uuid/id"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Observation timestamp T",
+      "dtype": "string",
+      "name": "observation_time",
+      "nullable": false,
+      "source": "metadata",
+      "units": "iso8601"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Prediction horizon H",
+      "dtype": "int64",
+      "name": "prediction_horizon_minutes",
+      "nullable": false,
+      "source": "metadata",
+      "units": "minutes"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Data provenance (SYNTHETIC, REAL, MIXED)",
+      "dtype": "string",
+      "name": "source_type",
+      "nullable": false,
+      "source": "metadata",
+      "units": "enum"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Latest rainfall rate at or before T",
+      "dtype": "float64",
+      "name": "rainfall_rate_now_mm_h",
+      "nullable": true,
+      "source": "weather",
+      "units": "mm/h"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Total rainfall accumulated in (T - 15m, T]",
+      "dtype": "float64",
+      "name": "rainfall_accum_15m_mm",
+      "nullable": true,
+      "source": "weather",
+      "units": "mm"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Total rainfall accumulated in (T - 30m, T]",
+      "dtype": "float64",
+      "name": "rainfall_accum_30m_mm",
+      "nullable": true,
+      "source": "weather",
+      "units": "mm"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Total rainfall accumulated in (T - 1h, T]",
+      "dtype": "float64",
+      "name": "rainfall_accum_1h_mm",
+      "nullable": true,
+      "source": "weather",
+      "units": "mm"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Total rainfall accumulated in (T - 3h, T]",
+      "dtype": "float64",
+      "name": "rainfall_accum_3h_mm",
+      "nullable": true,
+      "source": "weather",
+      "units": "mm"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Air temperature at or before T",
+      "dtype": "float64",
+      "name": "temperature_c",
+      "nullable": true,
+      "source": "weather",
+      "units": "\u00b0C"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Relative humidity 0\u2013100% at or before T",
+      "dtype": "float64",
+      "name": "humidity_pct",
+      "nullable": true,
+      "source": "weather",
+      "units": "%"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Wind speed at or before T",
+      "dtype": "float64",
+      "name": "wind_speed_mps",
+      "nullable": true,
+      "source": "weather",
+      "units": "m/s"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Age of weather observation at T",
+      "dtype": "float64",
+      "name": "weather_freshness_seconds",
+      "nullable": true,
+      "source": "weather",
+      "units": "seconds"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Latest water depth reading at or before T",
+      "dtype": "float64",
+      "name": "water_depth_current_cm",
+      "nullable": true,
+      "source": "sensor",
+      "units": "cm"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Water depth rate of change from prior reading",
+      "dtype": "float64",
+      "name": "water_depth_trend_cm_per_min",
+      "nullable": true,
+      "source": "sensor",
+      "units": "cm/min"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Maximum water depth in (T - 30m, T]",
+      "dtype": "float64",
+      "name": "water_depth_max_30m_cm",
+      "nullable": true,
+      "source": "sensor",
+      "units": "cm"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Number of sensors associated with edge",
+      "dtype": "int64",
+      "name": "nearby_sensor_count",
+      "nullable": false,
+      "source": "sensor",
+      "units": "count"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Quality confidence of latest sensor reading",
+      "dtype": "float64",
+      "name": "sensor_confidence",
+      "nullable": true,
+      "source": "sensor",
+      "units": "score 0..1"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Age of sensor reading at T",
+      "dtype": "float64",
+      "name": "sensor_freshness_seconds",
+      "nullable": true,
+      "source": "sensor",
+      "units": "seconds"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "1 if rainfall was not observed/supplied, 0 if present (including 0.0)",
+      "dtype": "bool",
+      "name": "is_rainfall_missing",
+      "nullable": false,
+      "source": "indicator",
+      "units": "boolean"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "1 if sensor water depth was missing, 0 if present",
+      "dtype": "bool",
+      "name": "is_water_depth_missing",
+      "nullable": false,
+      "source": "indicator",
+      "units": "boolean"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "1 if air temperature was missing, 0 if present",
+      "dtype": "bool",
+      "name": "is_temperature_missing",
+      "nullable": false,
+      "source": "indicator",
+      "units": "boolean"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "OSM road classification (primary, secondary, etc.)",
+      "dtype": "string",
+      "name": "road_class",
+      "nullable": false,
+      "source": "road",
+      "units": "category"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Length of road segment in meters",
+      "dtype": "float64",
+      "name": "length_m",
+      "nullable": false,
+      "source": "road",
+      "units": "meters"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Speed limit in meters per second",
+      "dtype": "float64",
+      "name": "speed_limit_mps",
+      "nullable": true,
+      "source": "road",
+      "units": "m/s"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Whether edge is on a bridge",
+      "dtype": "bool",
+      "name": "is_bridge",
+      "nullable": false,
+      "source": "road",
+      "units": "boolean"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Whether edge is in a tunnel",
+      "dtype": "bool",
+      "name": "is_tunnel",
+      "nullable": false,
+      "source": "road",
+      "units": "boolean"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Estimated elevation of edge centroid",
+      "dtype": "float64",
+      "name": "edge_elevation_m",
+      "nullable": true,
+      "source": "road",
+      "units": "meters"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Distance to active flood zone boundary at T",
+      "dtype": "float64",
+      "name": "dist_to_flood_zone_m",
+      "nullable": true,
+      "source": "road",
+      "units": "meters"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Hour of observation time",
+      "dtype": "int64",
+      "name": "hour_of_day",
+      "nullable": false,
+      "source": "temporal",
+      "units": "0..23"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Day of week (Monday=0)",
+      "dtype": "int64",
+      "name": "day_of_week",
+      "nullable": false,
+      "source": "temporal",
+      "units": "0..6"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Month of observation time",
+      "dtype": "int64",
+      "name": "month",
+      "nullable": false,
+      "source": "temporal",
+      "units": "1..12"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Season classification (MONSOON, PRE_MONSOON, etc.)",
+      "dtype": "string",
+      "name": "season_category",
+      "nullable": false,
+      "source": "temporal",
+      "units": "category"
+    },
+    {
+      "availability_contract": "<= T",
+      "description": "Prior flood occurrences on this edge in preceding 30 days",
+      "dtype": "int64",
+      "name": "historical_flood_count_30d",
+      "nullable": false,
+      "source": "historical",
+      "units": "count"
+    },
+    {
+      "availability_contract": "T < t <= T + horizon",
+      "description": "Target: 1 if edge experiences HIGH/SEVERE flood in (T, T + horizon], else 0",
+      "dtype": "int64",
+      "name": "target_flooded_within_horizon",
+      "nullable": false,
+      "source": "target",
+      "units": "0 or 1"
+    }
+  ],
+  "source_identifiers": [
+    "NORMAL",
+    "MODERATE_RAIN",
+    "SEVERE_RAIN",
+    "FLASH_FLOOD",
+    "RECOVERY"
+  ],
+  "source_type": "SYNTHETIC",
+  "splits": {
+    "test": {
+      "end_time": "2026-10-07T03:20:00+00:00",
+      "negative_count": 24,
+      "positive_count": 18,
+      "positive_rate": 0.4286,
+      "row_count": 42,
+      "split_name": "test",
+      "start_time": "2026-10-07T02:50:00+00:00"
+    },
+    "train": {
+      "end_time": "2026-10-07T02:15:00+00:00",
+      "negative_count": 132,
+      "positive_count": 36,
+      "positive_rate": 0.2143,
+      "row_count": 168,
+      "split_name": "train",
+      "start_time": "2026-10-07T00:00:00+00:00"
+    },
+    "validation": {
+      "end_time": "2026-10-07T02:45:00+00:00",
+      "negative_count": 23,
+      "positive_count": 13,
+      "positive_rate": 0.3611,
+      "row_count": 36,
+      "split_name": "validation",
+      "start_time": "2026-10-07T02:20:00+00:00"
+    }
+  },
+  "total_rows": 246
+}

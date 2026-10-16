@@ -1,0 +1,11 @@
+{
+  "dataset_content_hash": "3a440b39bd9b318bfa10bf70b56186e4e60d3a5f6ff861bf8c8f13141dd21cb9",
+  "dataset_version": "v1-3df12444-3a440b39",
+  "hyperparameters": {},
+  "input_feature_count": 29,
+  "model_sha256": "c738b0ac887259cd06a27c264e938ec744cf2ef42f84e62bddf574043926d475",
+  "model_type": "baseline",
+  "model_version": "baseline-v1",
+  "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+  "trained_at_utc": "2026-10-07T23:13:22.658040+00:00"
+}

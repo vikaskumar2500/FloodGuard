@@ -1,0 +1,40 @@
+{
+  "runs": [
+    {
+      "transport": "InMemory",
+      "concurrency": 1,
+      "events": 1000,
+      "publish_rate_eps": 76265.5333232089,
+      "consume_rate_eps": 20364.386927075437,
+      "publish_time_ms": 13.112082961015403,
+      "consume_time_ms": 49.10533293150365
+    },
+    {
+      "transport": "InMemory",
+      "concurrency": 5,
+      "events": 1000,
+      "publish_rate_eps": 78355.8310417955,
+      "consume_rate_eps": 12096.048663672724,
+      "publish_time_ms": 12.762292055413127,
+      "consume_time_ms": 82.67162507399917
+    },
+    {
+      "transport": "InMemory",
+      "concurrency": 10,
+      "events": 1000,
+      "publish_rate_eps": 56254.439023122635,
+      "consume_rate_eps": 10477.997545887913,
+      "publish_time_ms": 17.776374937966466,
+      "consume_time_ms": 95.43808305170387
+    },
+    {
+      "transport": "InMemory",
+      "concurrency": 20,
+      "events": 1000,
+      "publish_rate_eps": 73296.31876888553,
+      "consume_rate_eps": 6143.246691006515,
+      "publish_time_ms": 13.64324998576194,
+      "consume_time_ms": 162.7803749870509
+    }
+  ]
+}

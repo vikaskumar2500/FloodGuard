@@ -1,0 +1,136 @@
+name: floodguard
+
+services:
+  postgres:
+    image: postgis/postgis:17-3.5@sha256:01a6a70e41e6c4467c8f55f6063555ed72db2d6662cd0d571040d42eadaeb6f6
+    platform: ${POSTGIS_PLATFORM:-linux/amd64}
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-floodguard}
+      POSTGRES_USER: ${POSTGRES_USER:-floodguard}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me-local-only}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infrastructure/postgres/01-postgis.sql:/docker-entrypoint-initdb.d/01-postgis.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB && psql -U $$POSTGRES_USER -d $$POSTGRES_DB -tAc 'SELECT PostGIS_Version()' >/dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.4-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    ports:
+      - "127.0.0.1:${REDIS_PORT:-6379}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    restart: unless-stopped
+
+  localstack:
+    image: localstack/localstack:3.8
+    ports:
+      - "127.0.0.1:4566:4566"
+    environment:
+      - SERVICES=sqs,events,s3
+      - AWS_DEFAULT_REGION=ap-south-1
+    volumes:
+      - ./infrastructure/localstack/init.sh:/etc/localstack/init/ready.d/init.sh:ro
+    healthcheck:
+      test: ["CMD", "curl", "-s", "http://localhost:4566/_localstack/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 10s
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    image: floodguard-backend-dev
+    environment:
+      APP_NAME: ${APP_NAME:-floodguard-api}
+      APP_ENV: ${APP_ENV:-development}
+      APP_VERSION: ${APP_VERSION:-0.1.0}
+      APP_DEBUG: ${APP_DEBUG:-false}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      API_V1_PREFIX: ${API_V1_PREFIX:-/api/v1}
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:3000}
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-floodguard}:${POSTGRES_PASSWORD:-change-me-local-only}@postgres:5432/${POSTGRES_DB:-floodguard}
+      REDIS_URL: redis://redis:6379/0
+      HEALTH_CHECK_TIMEOUT_SECONDS: ${HEALTH_CHECK_TIMEOUT_SECONDS:-2}
+      REDIS_REQUIRED: ${REDIS_REQUIRED:-true}
+      ENABLE_SIMULATION_API: ${ENABLE_SIMULATION_API:-true}
+      USE_FIXTURE_ROUTING: ${USE_FIXTURE_ROUTING:-false}
+      ACTIVE_ROUTE_TTL_SECONDS: ${ACTIVE_ROUTE_TTL_SECONDS:-900}
+      EVENT_TRANSPORT: ${EVENT_TRANSPORT:-EVENTBRIDGE}
+      EVENTBRIDGE_ENABLED: ${EVENTBRIDGE_ENABLED:-true}
+      EVENTBRIDGE_BUS_NAME: ${EVENTBRIDGE_BUS_NAME:-floodguard-dev-events}
+      EVENTBRIDGE_SOURCE: ${EVENTBRIDGE_SOURCE:-com.floodguard}
+      EVENTBRIDGE_ENDPOINT_URL: http://localstack:4566
+      SQS_ENABLED: ${SQS_ENABLED:-true}
+      AWS_REGION: ${AWS_REGION:-ap-south-1}
+      SQS_ENDPOINT_URL: http://localstack:4566
+      SQS_ENVIRONMENT_QUEUE_URL: http://localstack:4566/000000000000/floodguard-environment-events
+      AWS_ACCESS_KEY_ID: mock_access_key
+      AWS_SECRET_ACCESS_KEY: mock_secret_key
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    volumes:
+      - ./backend/app:/app/app
+      - ./backend/tests:/app/tests
+      - ./backend/alembic:/app/alembic
+      - ./backend/alembic.ini:/app/alembic.ini:ro
+      - ./simulations:/app/simulations
+      - ./ml/floodguard_ml:/app/floodguard_ml
+      - ./ml/artifacts:/app/ml/artifacts
+      - ./data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:8000' + os.getenv('API_V1_PREFIX', '/api/v1') + '/health/ready', timeout=6)"]
+      interval: 10s
+      timeout: 7s
+      retries: 6
+      start_period: 10s
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    image: floodguard-frontend-dev
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost:8000}
+      NEXT_PUBLIC_API_V1_PREFIX: ${API_V1_PREFIX:-/api/v1}
+      NEXT_PUBLIC_MAP_STYLE_URL: ${NEXT_PUBLIC_MAP_STYLE_URL:-}
+      NEXT_TELEMETRY_DISABLED: "1"
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    volumes:
+      - ./frontend/app:/app/app
+      - ./frontend/components:/app/components
+      - ./frontend/lib:/app/lib
+      - ./frontend/public:/app/public
+      - ./frontend/tests:/app/tests
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/health').then(r => { if (!r.ok) process.exit(1) }).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

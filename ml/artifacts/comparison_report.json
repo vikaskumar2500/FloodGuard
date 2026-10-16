@@ -1,0 +1,326 @@
+{
+  "dataset_version": "v1-3df12444-3a440b39",
+  "models": {
+    "baseline": {
+      "batch_latency_ms": 0.036,
+      "name": "Rule-Based Baseline",
+      "scenario_holdout": {
+        "accuracy": 0.3611,
+        "balanced_accuracy": 0.4498,
+        "brier_score": 0.5211,
+        "confusion_matrix": {
+          "FN": 3,
+          "FP": 20,
+          "TN": 3,
+          "TP": 10
+        },
+        "f1": 0.4651,
+        "negative_samples": 23,
+        "positive_samples": 13,
+        "pr_auc": 0.3397,
+        "precision": 0.3333,
+        "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+        "recall": 0.7692,
+        "roc_auc": 0.4498,
+        "threshold": 0.5,
+        "total_samples": 36
+      },
+      "single_latency_ms": 0.001,
+      "test_metrics": {
+        "accuracy": 0.4286,
+        "balanced_accuracy": 0.5,
+        "brier_score": 0.4671,
+        "confusion_matrix": {
+          "FN": 0,
+          "FP": 24,
+          "TN": 0,
+          "TP": 18
+        },
+        "f1": 0.6,
+        "negative_samples": 24,
+        "positive_samples": 18,
+        "pr_auc": 0.4286,
+        "precision": 0.4286,
+        "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+        "recall": 1.0,
+        "roc_auc": 0.5,
+        "threshold": 0.2,
+        "total_samples": 42
+      },
+      "threshold": 0.2,
+      "top_features": [],
+      "train_metrics": {
+        "accuracy": 0.6429,
+        "balanced_accuracy": 0.5909,
+        "brier_score": 0.2957,
+        "confusion_matrix": {
+          "FN": 18,
+          "FP": 42,
+          "TN": 90,
+          "TP": 18
+        },
+        "f1": 0.375,
+        "negative_samples": 132,
+        "positive_samples": 36,
+        "pr_auc": 0.2571,
+        "precision": 0.3,
+        "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+        "recall": 0.5,
+        "roc_auc": 0.5909,
+        "threshold": 0.2,
+        "total_samples": 168
+      },
+      "val_metrics": {
+        "accuracy": 0.4444,
+        "balanced_accuracy": 0.5652,
+        "brier_score": 0.4544,
+        "confusion_matrix": {
+          "FN": 0,
+          "FP": 20,
+          "TN": 3,
+          "TP": 13
+        },
+        "f1": 0.5652,
+        "negative_samples": 23,
+        "positive_samples": 13,
+        "pr_auc": 0.3939,
+        "precision": 0.3939,
+        "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+        "recall": 1.0,
+        "roc_auc": 0.5652,
+        "threshold": 0.2,
+        "total_samples": 36
+      }
+    },
+    "logistic": {
+      "batch_latency_ms": 4.84,
+      "name": "Logistic Regression",
+      "scenario_holdout": {
+        "accuracy": 0.7222,
+        "balanced_accuracy": 0.6154,
+        "brier_score": 0.2643,
+        "confusion_matrix": {
+          "FN": 10,
+          "FP": 0,
+          "TN": 23,
+          "TP": 3
+        },
+        "f1": 0.375,
+        "negative_samples": 23,
+        "positive_samples": 13,
+        "pr_auc": 0.6574,
+        "precision": 1.0,
+        "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+        "recall": 0.2308,
+        "roc_auc": 0.7525,
+        "threshold": 0.5,
+        "total_samples": 36
+      },
+      "single_latency_ms": 4.813,
+      "test_metrics": {
+        "accuracy": 0.5714,
+        "balanced_accuracy": 0.625,
+        "brier_score": 0.2315,
+        "confusion_matrix": {
+          "FN": 0,
+          "FP": 18,
+          "TN": 6,
+          "TP": 18
+        },
+        "f1": 0.6667,
+        "negative_samples": 24,
+        "positive_samples": 18,
+        "pr_auc": 0.6421,
+        "precision": 0.5,
+        "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+        "recall": 1.0,
+        "roc_auc": 0.8079,
+        "threshold": 0.3,
+        "total_samples": 42
+      },
+      "threshold": 0.3,
+      "top_features": [
+        {
+          "abs_importance": 2.1714,
+          "feature": "hour_of_day",
+          "importance": 2.1714
+        },
+        {
+          "abs_importance": 1.848,
+          "feature": "rainfall_accum_15m_mm",
+          "importance": 1.848
+        },
+        {
+          "abs_importance": 1.3804,
+          "feature": "water_depth_trend_cm_per_min",
+          "importance": -1.3804
+        },
+        {
+          "abs_importance": 1.1027,
+          "feature": "nearby_sensor_count",
+          "importance": 1.1027
+        },
+        {
+          "abs_importance": 1.1027,
+          "feature": "length_m",
+          "importance": -1.1027
+        }
+      ],
+      "train_metrics": {
+        "accuracy": 0.9702,
+        "balanced_accuracy": 0.9811,
+        "brier_score": 0.0182,
+        "confusion_matrix": {
+          "FN": 0,
+          "FP": 5,
+          "TN": 127,
+          "TP": 36
+        },
+        "f1": 0.9351,
+        "negative_samples": 132,
+        "positive_samples": 36,
+        "pr_auc": 0.9992,
+        "precision": 0.878,
+        "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+        "recall": 1.0,
+        "roc_auc": 0.9998,
+        "threshold": 0.3,
+        "total_samples": 168
+      },
+      "val_metrics": {
+        "accuracy": 0.8333,
+        "balanced_accuracy": 0.8528,
+        "brier_score": 0.0835,
+        "confusion_matrix": {
+          "FN": 1,
+          "FP": 5,
+          "TN": 18,
+          "TP": 12
+        },
+        "f1": 0.8,
+        "negative_samples": 23,
+        "positive_samples": 13,
+        "pr_auc": 0.9021,
+        "precision": 0.7059,
+        "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+        "recall": 0.9231,
+        "roc_auc": 0.9264,
+        "threshold": 0.3,
+        "total_samples": 36
+      }
+    },
+    "xgboost": {
+      "batch_latency_ms": 5.188,
+      "name": "XGBoost Classifier",
+      "scenario_holdout": {
+        "accuracy": 0.7222,
+        "balanced_accuracy": 0.6656,
+        "brier_score": 0.2211,
+        "confusion_matrix": {
+          "FN": 7,
+          "FP": 3,
+          "TN": 20,
+          "TP": 6
+        },
+        "f1": 0.5455,
+        "negative_samples": 23,
+        "positive_samples": 13,
+        "pr_auc": 0.6682,
+        "precision": 0.6667,
+        "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+        "recall": 0.4615,
+        "roc_auc": 0.7074,
+        "threshold": 0.5,
+        "total_samples": 36
+      },
+      "single_latency_ms": 5.274,
+      "test_metrics": {
+        "accuracy": 0.9286,
+        "balanced_accuracy": 0.9375,
+        "brier_score": 0.0619,
+        "confusion_matrix": {
+          "FN": 0,
+          "FP": 3,
+          "TN": 21,
+          "TP": 18
+        },
+        "f1": 0.9231,
+        "negative_samples": 24,
+        "positive_samples": 18,
+        "pr_auc": 0.9185,
+        "precision": 0.8571,
+        "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+        "recall": 1.0,
+        "roc_auc": 0.9421,
+        "threshold": 0.2,
+        "total_samples": 42
+      },
+      "threshold": 0.2,
+      "top_features": [
+        {
+          "feature": "length_m",
+          "importance": 0.2512
+        },
+        {
+          "feature": "rainfall_accum_1h_mm",
+          "importance": 0.1665
+        },
+        {
+          "feature": "nearby_sensor_count",
+          "importance": 0.1579
+        },
+        {
+          "feature": "hour_of_day",
+          "importance": 0.0968
+        },
+        {
+          "feature": "water_depth_max_30m_cm",
+          "importance": 0.0775
+        }
+      ],
+      "train_metrics": {
+        "accuracy": 0.9286,
+        "balanced_accuracy": 0.9545,
+        "brier_score": 0.0219,
+        "confusion_matrix": {
+          "FN": 0,
+          "FP": 12,
+          "TN": 120,
+          "TP": 36
+        },
+        "f1": 0.8571,
+        "negative_samples": 132,
+        "positive_samples": 36,
+        "pr_auc": 1.0,
+        "precision": 0.75,
+        "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+        "recall": 1.0,
+        "roc_auc": 1.0,
+        "threshold": 0.2,
+        "total_samples": 168
+      },
+      "val_metrics": {
+        "accuracy": 0.8611,
+        "balanced_accuracy": 0.8913,
+        "brier_score": 0.0879,
+        "confusion_matrix": {
+          "FN": 0,
+          "FP": 5,
+          "TN": 18,
+          "TP": 13
+        },
+        "f1": 0.8387,
+        "negative_samples": 23,
+        "positive_samples": 13,
+        "pr_auc": 0.9702,
+        "precision": 0.7222,
+        "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+        "recall": 1.0,
+        "roc_auc": 0.9849,
+        "threshold": 0.2,
+        "total_samples": 36
+      }
+    }
+  },
+  "provenance": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy."
+}

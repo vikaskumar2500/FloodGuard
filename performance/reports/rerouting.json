@@ -1,0 +1,25 @@
+{
+  "runs": [
+    {
+      "scenario": "Single Active Route",
+      "active_routes": 1,
+      "total_latency_ms": 4.676500102505088,
+      "avg_latency_ms": 4.676500102505088,
+      "p95_latency_ms": 5.144150112755597
+    },
+    {
+      "scenario": "10 Active Routes",
+      "active_routes": 10,
+      "total_latency_ms": 46.55083303805441,
+      "avg_latency_ms": 4.655083303805441,
+      "p95_latency_ms": 5.120591634185985
+    },
+    {
+      "scenario": "50 Active Routes",
+      "active_routes": 50,
+      "total_latency_ms": 240.31320901121944,
+      "avg_latency_ms": 4.806264180224389,
+      "p95_latency_ms": 5.286890598246828
+    }
+  ]
+}

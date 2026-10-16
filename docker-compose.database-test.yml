@@ -1,0 +1,34 @@
+# Isolated, disposable PostGIS storage; never mounts the development data volume.
+name: floodguard-dbcheck
+services:
+  postgres-test:
+    image: postgis/postgis:17-3.5@sha256:01a6a70e41e6c4467c8f55f6063555ed72db2d6662cd0d571040d42eadaeb6f6
+    platform: ${POSTGIS_PLATFORM:-linux/amd64}
+    environment:
+      POSTGRES_DB: floodguard_dbcheck
+      POSTGRES_USER: floodguard_test
+      POSTGRES_PASSWORD: disposable-test-only
+    tmpfs:
+      - /var/lib/postgresql/data:size=256m
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U floodguard_test -d floodguard_dbcheck"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  database-check:
+    image: floodguard-backend
+    build: ./backend
+    environment:
+      APP_ENV: test
+      APP_DEBUG: "false"
+      DATABASE_URL: postgresql+asyncpg://floodguard_test:disposable-test-only@postgres-test:5432/floodguard_dbcheck
+      RUN_INTEGRATION_TESTS: "1"
+    volumes:
+      - ./backend/app:/app/app
+      - ./backend/tests:/app/tests
+      - ./backend/alembic:/app/alembic
+      - ./backend/alembic.ini:/app/alembic.ini:ro
+    depends_on:
+      postgres-test:
+        condition: service_healthy
+    command: ["uv", "run", "--locked", "pytest", "-q", "tests/integration/test_database.py"]

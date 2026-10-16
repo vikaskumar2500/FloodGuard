@@ -1,0 +1,55 @@
+{
+  "selected_threshold": 0.2,
+  "selection_policy": "F1 maximization subject to recall >= 0.70 on validation set",
+  "validation_threshold_tuning": [
+    {
+      "balanced_accuracy": 0.5652,
+      "f1": 0.5652,
+      "precision": 0.3939,
+      "recall": 1.0,
+      "threshold": 0.2
+    },
+    {
+      "balanced_accuracy": 0.5652,
+      "f1": 0.5652,
+      "precision": 0.3939,
+      "recall": 1.0,
+      "threshold": 0.3
+    },
+    {
+      "balanced_accuracy": 0.5652,
+      "f1": 0.5652,
+      "precision": 0.3939,
+      "recall": 1.0,
+      "threshold": 0.4
+    },
+    {
+      "balanced_accuracy": 0.5652,
+      "f1": 0.5652,
+      "precision": 0.3939,
+      "recall": 1.0,
+      "threshold": 0.5
+    },
+    {
+      "balanced_accuracy": 0.5652,
+      "f1": 0.5652,
+      "precision": 0.3939,
+      "recall": 1.0,
+      "threshold": 0.6
+    },
+    {
+      "balanced_accuracy": 0.5652,
+      "f1": 0.5652,
+      "precision": 0.3939,
+      "recall": 1.0,
+      "threshold": 0.7
+    },
+    {
+      "balanced_accuracy": 0.5652,
+      "f1": 0.5652,
+      "precision": 0.3939,
+      "recall": 1.0,
+      "threshold": 0.8
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "dashboard": {
+    "title": "FloodGuard Operational Dashboard",
+    "panels": [
+      {"title": "Health Status", "type": "stat", "target": "up"},
+      {"title": "Routing Latency (p95)", "type": "timeseries", "target": "routing_latency_p95_ms"},
+      {"title": "Realtime Active Routes", "type": "timeseries", "target": "active_routes_total"},
+      {"title": "Event DLQ Depth", "type": "stat", "target": "dlq_depth_max"},
+      {"title": "ML Inference Latency", "type": "timeseries", "target": "ml_inference_latency_ms"},
+      {"title": "Assistant Tool Calls", "type": "timeseries", "target": "assistant_tool_calls_total"}
+    ]
+  }
+}

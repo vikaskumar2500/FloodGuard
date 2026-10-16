@@ -1,0 +1,80 @@
+name: Deploy to Development
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_sha:
+        description: 'Git SHA to deploy'
+        required: true
+        type: string
+      deploy_terraform:
+        description: 'Run Terraform Apply?'
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.version_sha }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::123456789012:role/github-actions-dev-role
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init Dev
+        working-directory: infra/terraform/environments/dev
+        run: terraform init
+
+      - name: Terraform Plan Dev
+        working-directory: infra/terraform/environments/dev
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply Dev
+        if: ${{ inputs.deploy_terraform == true }}
+        working-directory: infra/terraform/environments/dev
+        run: terraform apply -auto-approve tfplan
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and Push Images
+        run: |
+          echo "Building and pushing images (BLOCKED locally)"
+          exit 1
+          
+      - name: Run Database Migrations
+        run: |
+          echo "Running Alembic Migrations against RDS (BLOCKED)"
+          exit 1
+          
+      - name: Update ECS Services
+        run: |
+          echo "Updating ECS Services (BLOCKED)"
+          exit 1
+          
+      - name: Wait for Deployment Health
+        run: |
+          echo "Waiting for ECS Services to stabilize (BLOCKED)"
+          exit 1
+          
+      - name: Run Smoke Tests
+        run: |
+          echo "Running Smoke Tests (BLOCKED)"
+          exit 1
+

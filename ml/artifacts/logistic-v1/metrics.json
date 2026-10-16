@@ -1,0 +1,65 @@
+{
+  "test": {
+    "accuracy": 0.5714,
+    "balanced_accuracy": 0.625,
+    "brier_score": 0.2315,
+    "confusion_matrix": {
+      "FN": 0,
+      "FP": 18,
+      "TN": 6,
+      "TP": 18
+    },
+    "f1": 0.6667,
+    "negative_samples": 24,
+    "positive_samples": 18,
+    "pr_auc": 0.6421,
+    "precision": 0.5,
+    "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+    "recall": 1.0,
+    "roc_auc": 0.8079,
+    "threshold": 0.3,
+    "total_samples": 42
+  },
+  "train": {
+    "accuracy": 0.9702,
+    "balanced_accuracy": 0.9811,
+    "brier_score": 0.0182,
+    "confusion_matrix": {
+      "FN": 0,
+      "FP": 5,
+      "TN": 127,
+      "TP": 36
+    },
+    "f1": 0.9351,
+    "negative_samples": 132,
+    "positive_samples": 36,
+    "pr_auc": 0.9992,
+    "precision": 0.878,
+    "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+    "recall": 1.0,
+    "roc_auc": 0.9998,
+    "threshold": 0.3,
+    "total_samples": 168
+  },
+  "validation": {
+    "accuracy": 0.8333,
+    "balanced_accuracy": 0.8528,
+    "brier_score": 0.0835,
+    "confusion_matrix": {
+      "FN": 1,
+      "FP": 5,
+      "TN": 18,
+      "TP": 12
+    },
+    "f1": 0.8,
+    "negative_samples": 23,
+    "positive_samples": 13,
+    "pr_auc": 0.9021,
+    "precision": 0.7059,
+    "provenance_warning": "SYNTHETIC DATASET EVALUATION: Do not claim real-world operational accuracy.",
+    "recall": 0.9231,
+    "roc_auc": 0.9264,
+    "threshold": 0.3,
+    "total_samples": 36
+  }
+}
