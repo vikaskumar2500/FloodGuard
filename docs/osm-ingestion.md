@@ -47,4 +47,4 @@ Turn-restriction relations, conditional access, lane-level semantics, maxspeed c
 
 ## Real data policy
 
-A real regional extract should be downloaded separately, recorded with its source URL/provider, capture date and coverage, and passed through `--dry-run` before persistence. Do not commit the extract. Record actual node/way/edge counts and import duration in `docs/phase-4-verification.md` after a PostGIS-backed run.
+A real regional extract should be downloaded separately, recorded with its source URL/provider, capture date and coverage, and passed through `--dry-run` before persistence. Do not commit the extract. Record actual node/way/edge counts and import duration in `docs/verification/phase-4-verification.md` after a PostGIS-backed run.

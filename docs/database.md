@@ -115,7 +115,7 @@ The migration explicitly creates 25 secondary indexes: 10 GiST and 15 B-tree. Ge
 
 Unique email, region slug, region/version, graph/OSM node, graph/OSM edge identity, producer/event, provider/external ID and route/sequence constraints already provide indexes. In particular `(route_id, sequence)` supports route lookup and ordering, so there is no extra route-ID index. The graph/OSM node index already supports graph-only node selection. There are no speculative JSONB GIN indexes, partitioning, sharding or BRIN indexes.
 
-`EXPLAIN (ANALYZE, BUFFERS)` is run on the synthetic meter-radius query with the natural plan and again with transaction-local `enable_seqscan=off`. The latter proves structural GiST eligibility only. Tiny fixture data can favor sequential scans; neither plan establishes a production speedup. See [phase-2-verification.md](phase-2-verification.md) for executed evidence.
+`EXPLAIN (ANALYZE, BUFFERS)` is run on the synthetic meter-radius query with the natural plan and again with transaction-local `enable_seqscan=off`. The latter proves structural GiST eligibility only. Tiny fixture data can favor sequential scans; neither plan establishes a production speedup. See [phase-2-verification.md](verification/phase-2-verification.md) for executed evidence.
 
 ## Constraints, units and prediction lineage
 

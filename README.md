@@ -235,7 +235,7 @@ PYTHONPATH=ml:backend backend/.venv/bin/python -m floodguard_ml.cli inspect-data
   --path data/processed/synthetic-v1
 ```
 
-See [ML dataset architecture](docs/ml-dataset.md) and [Phase 11 verification](docs/phase-11-verification.md).
+See [ML dataset architecture](docs/ml-dataset.md) and [Phase 11 verification](docs/verification/phase-11-verification.md).
 
 ## ML Flood Prediction Models (Phase 12)
 
@@ -257,7 +257,7 @@ PYTHONPATH=ml:backend backend/.venv/bin/python ml/floodguard_ml/cli.py compare-m
 
 > **Note**: All current models are trained on synthetic simulation datasets (`SYNTHETIC DATASET EVALUATION`). Real historical dataset training is blocked pending PostGIS historical archive ingestion.
 
-See [ML model architecture](docs/ml-model.md), [Model Card v1](docs/model-card-v1.md), and [Phase 12 verification](docs/phase-12-verification.md).
+See [ML model architecture](docs/ml-model.md), [Model Card v1](docs/model-card-v1.md), and [Phase 12 verification](docs/verification/phase-12-verification.md).
 
 ## ML Integration with Routing (Phase 13)
 
@@ -274,7 +274,7 @@ Integrate trained ML flood predictions into FloodGuard's real-time risk engine a
 PYTHONPATH=backend:ml backend/.venv/bin/python scripts/benchmark_cache.py
 ```
 
-See [ML inference architecture](docs/ml-inference.md) and [Phase 13 verification](docs/phase-13-verification.md).
+See [ML inference architecture](docs/ml-inference.md) and [Phase 13 verification](docs/verification/phase-13-verification.md).
 
 ## Troubleshooting
 
@@ -288,11 +288,21 @@ See [ML inference architecture](docs/ml-inference.md) and [Phase 13 verification
 - **PostGIS exec-format error on Apple Silicon:** enable amd64 emulation in your Docker runtime; the pinned official PostGIS image is amd64. An alternative multiarch image needs explicit review and verification before changing `POSTGIS_PLATFORM`.
 - **Dependency lock mismatch:** intentional updates use `uv lock` or `npm install`; normal startup uses locked installs. Commit the updated lockfile with the manifest. First builds require registry network access.
 
-## Current limitations
+## System Limitations & Engineering Trade-offs
 
-This is a development environment with placeholder credentials and reload servers. It is not hardened for public deployment. Routing/maps, auth, ML and AWS remain later-phase work. See [Phase 1 verification](docs/phase-1-verification.md) for the original environment evidence and unresolved dependency warnings, and [Phase 2 verification](docs/phase-2-verification.md) for database checks.
+* **Regional Graph Scope:** The routing engine is verified on regional road graphs (e.g., Kerala OSM network: 18K+ edges, 7.8K nodes). Continental-scale routing requires Customizable Contraction Hierarchies (CCH).
+* **Synthetic Training Baseline:** The current XGBoost flood prediction model was trained and evaluated on synthetic physical simulations combined with regional topography (`SYNTHETIC DATASET EVALUATION`). Real-world Doppler radar (NEXRAD) archive training is scheduled for Phase II.
+* **Vehicle Clearance Profile:** Traversability is evaluated against passenger vehicle safety limits ($>30\text{ cm}$ water depth = impassable). Dynamic profiles for high-clearance emergency 4x4s vs. low-clearance EVs are planned.
+* **Persistent Streaming Protocol:** Active route invalidation streams over Server-Sent Events (SSE). Mobile background state optimization will integrate Web Push / APNs.
 
-On the execution host, the stack and desktop/mobile browser checks passed inside Docker, but host localhost forwarding did not work. Repair the Docker runtime's host forwarding and rerun the smoke script before treating this machine's startup experience as complete. Host Turbopack builds were also restricted; the application build passed inside Docker. Preview the verified dashboard: [desktop](docs/assets/phase-1-desktop.png), [mobile](docs/assets/phase-1-mobile.png).
+See [System Limitations & Future Roadmap](docs/future-work-and-limitations.md) for full engineering specifications.
+
+## Future Roadmap
+
+- [ ] **Phase 1 (Scale & Profiles):** Customizable Contraction Hierarchies (CCH) for sub-50ms continental queries & customizable vehicle clearance profiles (Ambulance, Fire Truck, SUV, Sedan, EV).
+- [ ] **Phase 2 (Earth Observation):** Sentinel-1 Synthetic Aperture Radar (SAR) satellite imagery ingestion for cloud-penetrating flood extent polygon extraction.
+- [ ] **Phase 3 (Deep AI & Hydrodynamics):** Spatio-Temporal Graph Neural Networks (ST-GNNs) for predictive 30-to-60 minute flood wave propagation.
+- [ ] **Phase 4 (Disaster-Zone Resilience):** Offline-first peer-to-peer (P2P) mesh routing via Bluetooth Low Energy (BLE) / Wi-Fi Direct during catastrophic cellular network outages.
 
 ## SQS Asynchronous Event Processing (Phases 14, 15, 16)
 
@@ -321,7 +331,7 @@ FloodGuard utilizes S3-compatible storage for artifacts such as ML datasets and 
 - **Commands:** CLI support for publishing/fetching ML models and datasets (`publish-dataset`, `fetch-model`, etc.).
 - **Runtime Sync:** Backend loader syncs model from S3 into local cache upon startup, gracefully falling back if unavailable.
 
-See [Phase 17 documentation](docs/artifact-storage.md) and [Phase 17 verification](docs/phase-17-verification.md).
+See [Phase 17 documentation](docs/artifact-storage.md) and [Phase 17 verification](docs/verification/phase-17-verification.md).
 Phase 18 added AI Assistant.
 
 - [x] Phase 19: Incident Reporting, Verification & Trust Scoring
@@ -349,7 +359,7 @@ To trigger the workflows locally (if using `act`) or simply run the quality gate
 
 # Trigger development deployment manually in GitHub Actions by running the 'Deploy to Development' workflow.
 ```
-See [CI/CD Pipeline Architecture](docs/cicd.md) and [Phase 28 Verification](docs/phase-28-verification.md).
+See [CI/CD Pipeline Architecture](docs/cicd.md) and [Phase 28 Verification](docs/verification/phase-28-verification.md).
 
 ## Production Readiness Review (Phase 29)
 Before promoting the system, FloodGuard enforces strict readiness gates encompassing code quality, supply chain security, live deployment verification, and operational recovery. 
@@ -358,4 +368,4 @@ See the following Phase 29 compliance reports:
 - [Master Release Readiness Matrix](docs/release-readiness-matrix.md)
 - [Release Blockers Register](docs/release-blockers.md)
 - [Production Readiness Guidelines](docs/production-readiness.md)
-- [Phase 29 Verification](docs/phase-29-verification.md)
+- [Phase 29 Verification](docs/verification/phase-29-verification.md)

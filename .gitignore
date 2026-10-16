@@ -69,6 +69,7 @@ yarn-debug.log*
 *.log
 *-scan.txt
 .code-review-graph/
+frontend/*.cjs
 
 # ==========================================
 # 8. OS & Editor Files
